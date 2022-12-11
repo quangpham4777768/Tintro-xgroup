@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Animated from 'react-native-reanimated';
-
+import Service from './screens/Service';
 function MyTabBar({ state, descriptors, navigation, position }) {
   return (
     <SafeAreaView style={{ flexDirection: 'row',top:'0%', backgroundColor: 'blue' }}>
@@ -134,7 +134,7 @@ function HomeScreen() {
   return (
       <Tab2.Navigator tabBar={(props) => <MyServiceBar {...props} />}>
         <Tab2.Screen name="Hóa đơn" component={SettingsScreen} />
-        <Tab2.Screen name="Đăng ký dịch vụ" component={SettingsScreen} />
+        <Tab2.Screen name="Đăng ký dịch vụ" component={Service} />
       </Tab2.Navigator>
   );
 }

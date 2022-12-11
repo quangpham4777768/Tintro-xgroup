@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text,Button,StyleSheet, Image } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import {useState} from 'react'
-import 'swiper/css/navigation';
-import 'swiper/css';
+import Swiper from 'react-native-swiper/src';
+
+
 export default function Service(){
     const navigation = useNavigation();
     const [page,setPage]=useState(1);
@@ -13,14 +13,11 @@ export default function Service(){
     return(
         <View style ={styles.container}>
             <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
-                style={styles.swipe}
+                Swiper loop={true} showsPagination={false}
             >
-                <SwiperSlide index="1">Đăng ký wifi</SwiperSlide>
-                <SwiperSlide index="2">Đăng ký gửi xe</SwiperSlide>
-                <SwiperSlide index="3">Đăng ký dọn phòng</SwiperSlide>
+                <Text index="1">Đăng ký gửi xe</Text>
+                <Text index="2">Đăng ký wifi</Text>
+                <Text index="3">Đăng ký dọn phòng</Text>
             </Swiper>
             { page==1 &&
                 <View>
@@ -33,7 +30,7 @@ export default function Service(){
                         <Text>Chưa đăng ký dịch vụ Wifi</Text>
                         <Button>Đăng ký</Button>
                     </View>
-                    <Image style={styles.tinyLogo} source={require('@expo/snack-static/react-native-logo.png')}/>
+                    <Image style={styles.tinyLogo} source={{uri:'https://i.imgur.com/H0hPPmf.png'}}/>
                 </View>
             }
             { page==2 && wifi ==1 &&
