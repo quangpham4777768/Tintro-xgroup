@@ -3,8 +3,10 @@ import { Text, View, TouchableOpacity,StyleSheet  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Animated from 'react-native-reanimated';
 import Service from './screens/Service';
+import Payment from './screens/Payment';
 function MyTabBar({ state, descriptors, navigation, position }) {
   return (
     <SafeAreaView style={{ flexDirection: 'row',top:'0%', backgroundColor: 'blue' }}>
@@ -69,6 +71,7 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 
 function MyServiceBar({ state, descriptors, navigation, position }) {
   return (
+    <View style={styles.top1}>
     <View style={styles.top}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
@@ -88,7 +91,7 @@ function MyServiceBar({ state, descriptors, navigation, position }) {
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
+            navigation.navigate('Quản lý', { screen: route.name });
           }
         };
 
@@ -127,6 +130,16 @@ function MyServiceBar({ state, descriptors, navigation, position }) {
         );
       })}
     </View>
+    </View>
+  );
+}
+
+function Home() {
+  return (
+      <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+        <Tab.Screen name="Quản lý" component={HomeScreen} />
+        <Tab.Screen name="Thống kê" component={SettingsScreen} />
+      </Tab.Navigator>
   );
 }
 
@@ -148,6 +161,10 @@ function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
+  top1: {
+    backgroundColor:'white',
+    marginBottom:"-40%"
+  },
   top: {
     flexDirection: 'row',
     marginTop: 30, 
@@ -156,24 +173,24 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    height: '6%',
+    height: '23%',
     width: "80%",
-    left:"5%"
+    left:"20%",
   }
 });
 
 
 const Tab = createMaterialTopTabNavigator();
 const Tab2 = createMaterialTopTabNavigator();
-
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <SafeAreaProvider>
     <NavigationContainer>
-      <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-        <Tab.Screen name="Thống kê" component={HomeScreen} />
-        <Tab.Screen name="Quản lý" component={SettingsScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator >
+        <Stack.Screen name="HomePay" component={Home} options={{headerShown: false}} />
+        <Stack.Screen name="Payment" component={Payment} />
+      </Stack.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>
   );
