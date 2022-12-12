@@ -189,7 +189,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator >
         <Stack.Screen name="HomePay" component={Home} options={{headerShown: false}} />
-        <Stack.Screen name="Payment" component={Payment} />
+        <Stack.Screen name="Payment" component={Payment} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>
