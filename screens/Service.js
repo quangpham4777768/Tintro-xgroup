@@ -23,9 +23,9 @@ export default function Service(){
         register: 0
     }];
     
-    const [wifi,setWifi]=useState(0);
+    const [wifi,setWifi]=useState(1);
     getSelectedDayEvents = date => {
-        navigation.navigate("Payment",{types:"Đăng kí dọn phòng",date:date})    
+        navigation.navigate("Payment",{types:"Đăng kí dọn phòng",date:date,image:require('../assets/Clean.png')})    
     };
     return(
         <View style ={styles.container}>
@@ -42,11 +42,11 @@ export default function Service(){
                         <View >
                             <View style={styles.float}>
                                 <Text style={styles.half}>Chưa đăng ký dịch vụ Wifi</Text>
-                                <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí wifi",date:"30/9/2022-30/10/2022"})}}>
+                                <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí wifi",date:"30/9/2022-30/10/2022",image:require('../assets/wifi.png')})}}>
                                         <Image top='80%' left='200%' source={require('../assets/register.png')}/> 
                                 </TouchableOpacity>
                             </View>
-                            <Image top='35%' source={require('../assets/routewifi.png')}/>
+                            <Image top='35%' source={require('../assets/wifi.png')}/>
                         </View>}
                         { wifi ==1 &&
                             <View>
@@ -77,7 +77,7 @@ export default function Service(){
                                 }}>
                                 30/9/2022 - 30/10/2022
                                 </Animated.Text>
-                                <View top='80%' left='67%'>
+                                <View top='5%' left='57%'>
                                 <TouchableOpacity onPress={()=>setWifi(0)}>
                                     <Image  source={require('../assets/cancel.png')} />
                                 </TouchableOpacity>
@@ -114,7 +114,7 @@ export default function Service(){
                                     </View>
                                     
                                     {!props.register?
-                                    <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",date:"30/9/2022-30/10/2022"})}}>
+                                    <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",date:"30/9/2022-30/10/2022",image:require('../assets/car.png')})}}>
                                         <Image marginTop='2%' source={require('../assets/register.png')}/> 
                                     </TouchableOpacity>:
                                     <TouchableOpacity>
