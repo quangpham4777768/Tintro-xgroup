@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./screens/Home";
 import Scanner from "./screens/Scanner";
-
+import Bill  from "./screens/Bill"
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -23,7 +23,7 @@ function App() {
       {/* <Stack.Screen name="Scanner" component={Scanner} /> */}
       <Stack.Screen
         name="Scanner"
-        component={Scanner}
+        component={Bill}
         options={{
           headerTintColor: "white",
           headerStyle: { 
