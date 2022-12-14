@@ -3,8 +3,9 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./screens/Home";
-import Scanner from "./screens/Scanner";
-import Bill  from "./screens/Bill"
+import BillList from "./screens/BillList";
+import Statistic from "./screens/Statistic";
+import Bill from "./screens/Bill";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -18,32 +19,51 @@ const MyTheme = {
 
 function App() {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} options={{
+    <Stack.Navigator initialRouteName="BillList">
+      <Stack.Screen
+        name="BillList"
+        component={BillList}
+        options={{
           headerTintColor: "white",
-          headerStyle: { 
-            backgroundColor: "#5265FF", 
-            title: "Danh sách hóa đơn"
+          title: "Danh sách hóa đơn",
+          headerStyle: {
+            backgroundColor: "#5265FF",
             // justifyContent: 'center',
             // alignItems: 'center',
             // textAlign: 'center'
           },
-          headerTitleAlign: 'center'
-        }} />
+          headerTitleAlign: "center",
+        }}
+      />
       {/* <Stack.Screen name="Scanner" component={Scanner} /> */}
       <Stack.Screen
         name="Bill"
         component={Bill}
         options={{
           headerTintColor: "white",
-          headerStyle: { 
-            backgroundColor: "#5265FF", 
-            title: "Chi tiết hóa đơn"
+          title: "Chi tiết hóa đơn",
+          headerStyle: {
+            backgroundColor: "#5265FF",
             // justifyContent: 'center',
             // alignItems: 'center',
             // textAlign: 'center'
           },
-          headerTitleAlign: 'center'
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name="Statistic"
+        component={Statistic}
+        options={{
+          headerTintColor: "white",
+          title: "Quản lý nhà trọ",
+          headerStyle: {
+            backgroundColor: "#5265FF",
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            // textAlign: 'center'
+          },
+          headerTitleAlign: "center",
         }}
       />
     </Stack.Navigator>
