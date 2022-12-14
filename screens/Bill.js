@@ -10,9 +10,8 @@ import {
 } from "react-native-table-component";
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import React, { Component } from 'react';
-// export default function Bill(){
+import { DataTable } from 'react-native-paper';
 
-// }
 export default class Bill extends Component {
   constructor(props) {
     super(props);
@@ -30,29 +29,31 @@ export default class Bill extends Component {
     const tableData = [];
     const content = ['Phí phòng ở từ ngày 01 / 01 / 2022 đến 31/01/2022', 'Phí dịch vụ'];
     const cost = [4000000, 200000];
-    for (let i = 0; i < 3; i += 1) {
-      const rowData = [];
-
-      rowData.push(content[i]);
-      rowData.push(cost[i]);
-      tableData.push(rowData);
-    }
+    
+    let vndDong = Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "VND",
+    });
 
     return (
       <View style={styles.container}>
         <View>
-          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Số biên lai {"\n"} </Text>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Số biên lai: {"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
         <View>
-          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Năm {"\n"} </Text>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Năm: {"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
         <View>
           <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Ngày in biên lai: {"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
-        <ScrollView horizontal={true}>
+        <View>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Trạng thái: {"\n"} </Text>
+          <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
+        </View>
+        {/* <ScrollView horizontal={true}>
           <View>
             <Table borderStyle={{ borderWidth: 1 }}>
               <Row
@@ -79,7 +80,27 @@ export default class Bill extends Component {
               </Table>
             </ScrollView>
           </View>
-        </ScrollView>
+        </ScrollView> */}
+        <View style={{justifyContent: 'center', alignItems: 'center', paddingTop: 50}}>
+          <DataTable>
+            <DataTable.Header style={styles.header}>
+              <DataTable.Title>Nội dung</DataTable.Title>
+              <DataTable.Title>Giá</DataTable.Title>
+            </DataTable.Header>
+            <DataTable.Row style={styles.row}>
+              <DataTable.Cell>{content[0]}</DataTable.Cell>
+              <DataTable.Cell>{vndDong.format(cost[0])}</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row style={styles.row}>
+              <DataTable.Cell>{content[1]}</DataTable.Cell>
+              <DataTable.Cell>{vndDong.format(cost[1])}</DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row style={styles.row}>
+              <DataTable.Cell>Thành tiền</DataTable.Cell>
+              <DataTable.Cell>{vndDong.format(cost[0] + cost[1])}</DataTable.Cell>
+            </DataTable.Row>
+          </DataTable>
+        </View>
       </View>
     );
   }

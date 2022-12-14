@@ -19,15 +19,26 @@ const MyTheme = {
 function App() {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home} options={{
+          headerTintColor: "white",
+          headerStyle: { 
+            backgroundColor: "#5265FF", 
+            title: "Danh sách hóa đơn"
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            // textAlign: 'center'
+          },
+          headerTitleAlign: 'center'
+        }} />
       {/* <Stack.Screen name="Scanner" component={Scanner} /> */}
       <Stack.Screen
-        name="Scanner"
+        name="Bill"
         component={Bill}
         options={{
           headerTintColor: "white",
           headerStyle: { 
             backgroundColor: "#5265FF", 
+            title: "Chi tiết hóa đơn"
             // justifyContent: 'center',
             // alignItems: 'center',
             // textAlign: 'center'

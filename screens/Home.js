@@ -7,7 +7,7 @@ export default function Home(){
 
     return(
         <View style ={styles.container}>
-            <Button title="Scan để xem in-tư của bạn bè nào" onPress={()=>navigation.navigate('Scanner')} />
+            <Button title="Scan để xem in-tư của bạn bè nào" onPress={()=>navigation.navigate('Bill')} />
         </View>
     )
 }
