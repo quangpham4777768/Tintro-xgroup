@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text,Button,StyleSheet, Image,TouchableOpacity } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { Navigation } from 'swiper';
 import {useState} from 'react'
 import Swiper from 'react-native-swiper/src';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import Animated from 'react-native-reanimated';
-
+import axios from "axios";
 export default function Service(){
     const navigation = useNavigation();
+    useEffect(() => {
+        AsyncStorage.getItem("user").then((userid)=>
+        axios.get('https://backend-production-56ee.up.railway.app/api/getAllAprtmentUser/?id='+userid).then((response) => {
+            const res = response.data;
+            setService(res);
+            for (var i=0; i < res.length; i++) {
+                if(res[i].type==="Đăng ký wifi")
+                    setWifi(1);
+            }
+          })
+      )});
     const car =[{
         name: '99-H7-7060',
         vefried: 1,
@@ -22,8 +34,8 @@ export default function Service(){
         day2: "23/2/2022",
         register: 0
     }];
-    
-    const [wifi,setWifi]=useState(1);
+    const [service,setService]=useState([]);
+    const [wifi,setWifi]=useState(0);
     getSelectedDayEvents = date => {
         navigation.navigate("Payment",{types:"Đăng kí dọn phòng",date:date,image:require('../assets/Clean.png')})    
     };
@@ -77,17 +89,13 @@ export default function Service(){
                                 }}>
                                 30/9/2022 - 30/10/2022
                                 </Animated.Text>
-                                <View top='5%' left='57%'>
-                                <TouchableOpacity onPress={()=>setWifi(0)}>
-                                    <Image  source={require('../assets/cancel.png')} />
-                                </TouchableOpacity>
-                                </View>
                             </View>
                         }
                     </View>
                     <View style={styles.slide1}>
                         <Text style={styles.text}>Dịch vụ giữ xe</Text>
-                        {car.map((props)=>{
+                        {service.map((props)=>{
+                            if(props.type==="Đăng ký giữ xe")
                             return(
                                 <View marginTop='0%'>
                                     <Animated.Text
@@ -97,7 +105,7 @@ export default function Service(){
                                             marginTop:10,
                                             fontWeight:"400"
                                         }}>
-                                    {props.name}
+                                    {props.car.name}
                                     </Animated.Text>
                                     <View style={{
                                     backgroundColor:"#E9ECFF",
@@ -106,14 +114,14 @@ export default function Service(){
 
                                 }}>
                                     <Image source={require('../assets/leftcar.png')}/>
-                                    {props.vefried?<Text style={styles.textdate}>{props.day1} - {props.day2}</Text>:<Text style={styles.textdate}>Chưa đăng ký dịch vụ</Text>}
-                                    {props.vefried?<Image source={require('../assets/check.png')} style={styles.check}/>:<Image source={require('../assets/uncheck.png')} style={styles.check}/>}
-                                    {props.vefried?<Text style={styles.word}>Đã duyệt</Text>:  <Text style={styles.word}>Chưa duyệt</Text>}
+                                    {props.car.veri?<Text style={styles.textdate}>{props.day1} - {props.day2}</Text>:<Text style={styles.textdate}>Chưa đăng ký dịch vụ</Text>}
+                                    {1?<Image source={require('../assets/check.png')} style={styles.check}/>:<Image source={require('../assets/uncheck.png')} style={styles.check}/>}
+                                    {1?<Text style={styles.word}>Đã duyệt</Text>:  <Text style={styles.word}>Chưa duyệt</Text>}
                                     <Image style={styles.space} source={require('../assets/space.png')}/>
                                     <Image style={styles.delets} source={require('../assets/delete.png')}/>
                                     </View>
                                     
-                                    {!props.register?
+                                    {!props.car.veri?
                                     <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",date:"30/9/2022-30/10/2022",image:require('../assets/car.png')})}}>
                                         <Image marginTop='2%' source={require('../assets/register.png')}/> 
                                     </TouchableOpacity>:

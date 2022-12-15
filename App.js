@@ -35,6 +35,43 @@ function MyTabBar({ state, descriptors, navigation, position }) {
           }
         };
 
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Animated.Text
+              style={{
+                color: isFocused ? 'white' : 'grey',
+                marginVertical: 10,
+              }}>
+              {label}
+            </Animated.Text>
+            <View
+              style={{
+                width: '80%',
+                backgroundColor: isFocused ? 'white' : 'transparent',
+                height: 5,
+                marginTop: 'auto',
+              }}></View>
+          </TouchableOpacity>
+        );
+      })}
+    </SafeAreaView>
+  );
+}
+
 function MyServiceBar({ state, descriptors, navigation, position }) {
   return (
     <View style={styles.top1}>
@@ -153,7 +190,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
     <NavigationContainer>
-      <Stack.Navigator >
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Scanner" component={Scanner} />
         <Stack.Screen name="HomePay" component={Home} options={{headerShown: false}} />
