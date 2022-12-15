@@ -1,9 +1,16 @@
 import React,{useState} from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text,Button,StyleSheet, Image ,TextInput,TouchableOpacity,Switch, Alert} from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
+import axios from "axios";
 export default function Login(props){
-    
+    const storeUser = async (value) => {
+        try {
+            await AsynStorage.setItem("user", JSON.stringify(value));
+          } catch (error) {
+            console.log(error);
+          }
+        };
     const navigation = useNavigation();
 
     const [number, setNumber] = useState({value: '', error: ''});
@@ -18,21 +25,32 @@ export default function Login(props){
         return '';
     };
     const passwordValidator = (password) =>{
-        if (!password || password.length <= 8) return 'Mật khẩu không hợp lệ.';
+        if (!password || password.length <= 8) return Alert('Mật khẩu không hợp lệ.');
 
         return '';
     };
     const _onLoginPressed = () => {
-        const NumberError = numberValidator(number.value);
-        const PasswordError = passwordValidator(password.value);
+        // const NumberError = numberValidator(number.value);
+        // const PasswordError = passwordValidator(password.value);
     
-        if (NumberError || PasswordError) {
-          setNumber({ ...number, error: NumberError });
-          setPassword({ ...password, error: PasswordError });
-          return;
-        }
-    
-        navigation.navigate('Scanner');
+        // if (NumberError || PasswordError) {
+        //   setNumber({ ...number, error: NumberError });
+        //   setPassword({ ...password, error: PasswordError });
+        //   return;
+        // }
+
+        axios.post('https://backend-production-56ee.up.railway.app/api/login',{
+            phone:number.value,
+            password:password.value,
+          }).then((response) => {
+            const res = response.data.message;
+            
+            if(res==="Success"){
+            const id = response.data.userID;
+            AsyncStorage.setItem("user", JSON.stringify(id)).then(
+                navigation.navigate("HomePay")
+            )}
+          });
     };
 
     return(
