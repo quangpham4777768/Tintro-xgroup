@@ -38,19 +38,19 @@ export default class Bill extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Số biên lai: {"\n"} </Text>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Số biên lai: 11111{"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
         <View>
-          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Năm: {"\n"} </Text>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Năm: 2022{"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
         <View>
-          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Ngày in biên lai: {"\n"} </Text>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Ngày in biên lai: 15/12/2022{"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
         <View>
-          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Trạng thái: {"\n"} </Text>
+          <Text style={{flex: 1, flexWrap: 'wrap'}}>{"\n"} Trạng thái: Đã thanh toán{"\n"} </Text>
           <View style={{borderBottomColor: 'black', borderBottomWidth: 1,}} />
         </View>
         {/* <ScrollView horizontal={true}>
