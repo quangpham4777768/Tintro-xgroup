@@ -9,38 +9,30 @@ export default function Accept({ navigation }){
     const [mota,setMota]= useState("");
     return (
         <View style={styles.container}>
-            <Image style={styles.top} source={require('../assets/TopAccept.png')}/>
-            <View style={styles.container1}>
-                <Animated.Text style={{left:'6%'}}>Tiêu đề</Animated.Text>
-                <TextInput value={tieude}  onChangeText={tieude => setTieude(tieude)} style={styles.input}placeholder="Nhập tiêu đề"/>
-                <Animated.Text style={{left:'6%'}}>Chủ nhà</Animated.Text>
-                <TextInput value={chunha} onChangeText={chunha => setChunha(chunha)} style={styles.input}placeholder="Nhập tên chủ nhà"/>
-                <Animated.Text style={{left:'6%'}}>Số điện thoại liên hệ</Animated.Text>
-                <TextInput value={sdt} onChangeText={sdt => setSdt(sdt)} style={styles.input}placeholder="Nhập số điện thoại"/>
-                <Animated.Text style={{left:'6%'}}>Mô tả chi tiết</Animated.Text>
-                <TextInput value={mota}  onChangeText={mota => setMota(mota)} style={styles.input1}placeholder="Mô tả"/>
-            </View>
+            <Image style={styles.delets} source={require('../assets/TopAccept.png')}/>
+            <TextInput value={tieude}  onChangeText={tieude => setTieude(tieude)} style={styles.input}placeholder="Nhập tiêu đề"/>
+            <Animated.Text style={{left:'-21%'}}>Tiêu đề</Animated.Text>
+            <TextInput value={chunha} onChangeText={chunha => setChunha(chunha)} style={styles.input}placeholder="Nhập tên chủ nhà"/>
+            <Animated.Text style={{left:'-25%'}}>Chủ nhà</Animated.Text>
+            <TextInput value={sdt} onChangeText={sdt => setSdt(sdt)} style={styles.input}placeholder="Nhập số điện thoại"/>
+            <Animated.Text style={{left:'-25%'}}>Số điện thoại liên hệ</Animated.Text>
+            <TextInput value={mota}  onChangeText={mota => setMota(mota)} style={styles.input}placeholder=""/>
+            <Animated.Text style={{left:'-21%'}}>Mô tả chi tiết</Animated.Text>
             <TouchableOpacity onPress={()=>navigation.goBack() }>
-                <Image style={styles.delets} source={require('../assets/XacNhan.png')}/>
+            <Image style={styles.delets} source={require('../assets/XacNhan.png')}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>navigation.goBack() }>
-                <Image style={styles.delets} source={require('../assets/Huy.png')}/>
+            <Image style={styles.delets} source={require('../assets/Huy.png')}/>
             </TouchableOpacity>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    container:{
         flex : 1,
         flexDirection : 'column',
-        justifyContent :'center',
-        alignItems : 'center',
-        justifyContent :'center',
-        backgroundColor: 'white',
-    },
-    container1: {
-        marginBottom:50
+        justifyContent :'center'
     },
     input: {
         height: 40,
@@ -49,28 +41,10 @@ const styles = StyleSheet.create({
         padding: 10,
         width:300
     },
-    input1: {
-        height: 150,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        width:300
-        
-    },
-    top: {
+    delets:{
         justifyContent :'center',
         alignItems : 'center',
         justifyContent :'center',
-        resizeMode:"contain",
-        width:250,
-        marginTop:5,
-        marginBottom:40
-    },
-    delets: {
-        justifyContent :'center',
-        alignItems : 'center',
-        justifyContent :'center',
-        marginTop:5,
-        marginBottom:10
+        marginTop:5
     }
 })
