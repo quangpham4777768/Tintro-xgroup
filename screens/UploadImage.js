@@ -1,6 +1,5 @@
 import React,{useState , useEffect} from "react";
 import {View,StyleSheet,TextInput,Image,TouchableOpacity,Text} from 'react-native';
-import Animated from 'react-native-reanimated';
 
 export default function UploadImage({ navigation }){
     return (
