@@ -15,25 +15,18 @@ export default function Service(){
         axios.get('https://backend-production-56ee.up.railway.app/api/getAllAprtmentUser/?id='+userid).then((response) => {
             const res = response.data;
             setService(res);
+            Setuse(userid);
             for (var i=0; i < res.length; i++) {
+                serid=userid;
                 if(res[i].type==="Đăng ký wifi")
                     setWifi(1);
             }
           })
       )});
-    const car =[{
-        name: '99-H7-7060',
-        vefried: 1,
-        day1: "20/2/2022",
-        day2: "23/2/2022",
-        register: 1
-    },{
-        name: '99-H7-7060',
-        vefried: 0,
-        day1: "20/2/2022",
-        day2: "23/2/2022",
-        register: 0
-    }];
+      const [use,Setuse]=useState(0);
+    const current = new Date();
+    const currentdate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const nextdate = `${current.getDate()}/${(current.getMonth()+2)%12}/${current.getFullYear()}`;
     const [service,setService]=useState([]);
     const [wifi,setWifi]=useState(0);
     getSelectedDayEvents = date => {
@@ -53,9 +46,8 @@ export default function Service(){
                         { wifi ==0 &&
                         <View >
                             <View style={styles.float}>
-                                <Text style={styles.half}>Chưa đăng ký dịch vụ Wifi</Text>
-                                <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí wifi",date:"30/9/2022-30/10/2022",image:require('../assets/wifi.png')})}}>
-                                        <Image top='80%' left='200%' source={require('../assets/register.png')}/> 
+                                <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng ký wifi",user:use,date:currentdate+"-"+nextdate,image:require('../assets/wifi.png')})}}>
+                                        <Image style={{marginLeft:'37%',marginTop:'10%'}}source={require('../assets/register.png')}/> 
                                 </TouchableOpacity>
                             </View>
                             <Image top='35%' source={require('../assets/wifi.png')}/>
@@ -118,14 +110,20 @@ export default function Service(){
                                     {1?<Image source={require('../assets/check.png')} style={styles.check}/>:<Image source={require('../assets/uncheck.png')} style={styles.check}/>}
                                     {1?<Text style={styles.word}>Đã duyệt</Text>:  <Text style={styles.word}>Chưa duyệt</Text>}
                                     <Image style={styles.space} source={require('../assets/space.png')}/>
-                                    <Image style={styles.delets} source={require('../assets/delete.png')}/>
                                     </View>
                                     
                                     {!props.car.veri?
-                                    <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",date:"30/9/2022-30/10/2022",image:require('../assets/car.png')})}}>
+                                    <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",car:props.car,date:currentdate+"-"+nextdate,image:require('../assets/car.png')})}}>
                                         <Image marginTop='2%' source={require('../assets/register.png')}/> 
                                     </TouchableOpacity>:
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={()=>axios.post('https://backend-production-56ee.up.railway.app/api/car?userid='+props.car.user.id,{
+                                        id:props.car.id,
+                                        name:props.car.name,
+                                        status:props.car.status,
+                                        user:props.car.user,
+                                        veri:0
+                                      }).then((response) => {
+                                  })}>
                                         <Image marginTop='2%' source={require('../assets/cancel.png')} />
                                     </TouchableOpacity>}
                                     <View style={{marginTop: '-40%'}}></View>
