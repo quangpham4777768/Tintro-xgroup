@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text,Button,StyleSheet, Image,TouchableOpacity } from "react-native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { Navigation } from 'swiper';
 import {useState} from 'react'
 import Swiper from 'react-native-swiper/src';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import Animated from 'react-native-reanimated';
-import axios from "axios";
+
 export default function Service(){
     const navigation = useNavigation();
     useEffect(() => {
@@ -81,13 +80,17 @@ export default function Service(){
                                 }}>
                                 30/9/2022 - 30/10/2022
                                 </Animated.Text>
+                                <View top='5%' left='57%'>
+                                <TouchableOpacity onPress={()=>setWifi(0)}>
+                                    <Image  source={require('../assets/cancel.png')} />
+                                </TouchableOpacity>
+                                </View>
                             </View>
                         }
                     </View>
                     <View style={styles.slide1}>
                         <Text style={styles.text}>Dịch vụ giữ xe</Text>
-                        {service.map((props)=>{
-                            if(props.type==="Đăng ký giữ xe")
+                        {car.map((props)=>{
                             return(
                                 <View marginTop='0%'>
                                     <Animated.Text
@@ -97,7 +100,7 @@ export default function Service(){
                                             marginTop:10,
                                             fontWeight:"400"
                                         }}>
-                                    {props.car.name}
+                                    {props.name}
                                     </Animated.Text>
                                     <View style={{
                                     backgroundColor:"#E9ECFF",
@@ -106,9 +109,9 @@ export default function Service(){
 
                                 }}>
                                     <Image source={require('../assets/leftcar.png')}/>
-                                    {props.car.veri?<Text style={styles.textdate}>{props.day1} - {props.day2}</Text>:<Text style={styles.textdate}>Chưa đăng ký dịch vụ</Text>}
-                                    {1?<Image source={require('../assets/check.png')} style={styles.check}/>:<Image source={require('../assets/uncheck.png')} style={styles.check}/>}
-                                    {1?<Text style={styles.word}>Đã duyệt</Text>:  <Text style={styles.word}>Chưa duyệt</Text>}
+                                    {props.vefried?<Text style={styles.textdate}>{props.day1} - {props.day2}</Text>:<Text style={styles.textdate}>Chưa đăng ký dịch vụ</Text>}
+                                    {props.vefried?<Image source={require('../assets/check.png')} style={styles.check}/>:<Image source={require('../assets/uncheck.png')} style={styles.check}/>}
+                                    {props.vefried?<Text style={styles.word}>Đã duyệt</Text>:  <Text style={styles.word}>Chưa duyệt</Text>}
                                     <Image style={styles.space} source={require('../assets/space.png')}/>
                                     </View>
                                     

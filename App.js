@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Text, View, TouchableOpacity,StyleSheet  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Animated from 'react-native-reanimated';
-import Service from './screens/Service';
-import Payment from './screens/Payment';
+import Location from "./screens/Location";
+import Info from "./screens/Info";
+import UploadImage from "./screens/UploadImage";
+import Accept from "./screens/Accept";
 
 import LoginScreen from './screens/Login';
 import RegisterScreen from './screens/Register';
@@ -189,9 +187,9 @@ const styles = StyleSheet.create({
 const Tab = createMaterialTopTabNavigator();
 const Tab2 = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
-    <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" >
         <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
@@ -201,9 +199,12 @@ export default function App() {
         <Stack.Screen name="DoneCreated" component={DoneScreen} options={{headerShown: false}}/>
         <Stack.Screen name="HomePay" component={Home} options={{headerShown: false}} />
         <Stack.Screen name="Payment" component={Payment} options={{headerShown: false}}/>
+
+        <Stack.Screen name="Location" component={Location} options={{headerShown: false}}/>
+        <Stack.Screen name="Info" component={Info} options={{headerShown: false}}/>
+        <Stack.Screen name="UploadImage" component={UploadImage} options={{headerShown: false}}/>
+        <Stack.Screen name="Accept" component={Accept} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
-    </SafeAreaProvider>
   );
 }
-
