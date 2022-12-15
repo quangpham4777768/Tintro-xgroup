@@ -106,7 +106,7 @@ export default function LoginScreen(props){
             </View> */}
             
             <View style ={{width : '70%',height:60 , marginTop:'5%',marginBottom: 60 }}  >
-                <Button title="Đăng nhập" onPress={() => navigation.navigate('HomePay')} />
+                <Button title="Đăng nhập" onPress={() => navigation.navigate('BillList')} />
             </View>
 
 

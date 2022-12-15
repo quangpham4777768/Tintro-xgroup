@@ -13,6 +13,9 @@ import RegisterScreen from './screens/Register';
 import DoneScreen from './screens/DoneCreated';
 import InfoScreen from './screens/InfoCreated';
 import PassScreen from './screens/PasssCreated';
+import BillList from "./screens/BillList";
+import Statistic from "./screens/Statistic";
+import Bill from "./screens/Bill";
 import Scanner from './screens/Scanner';
 function MyTabBar({ state, descriptors, navigation, position }) {
   return (
@@ -199,8 +202,55 @@ export default function App() {
         <Stack.Screen name="PassCreated" component={PassScreen} options={{headerShown: false}}/>
         <Stack.Screen name="InfoCreated" component={InfoScreen} options={{headerShown: false}}/>
         <Stack.Screen name="DoneCreated" component={DoneScreen} options={{headerShown: false}}/>
+
         <Stack.Screen name="HomePay" component={Home} options={{headerShown: false}} />
         <Stack.Screen name="Payment" component={Payment} options={{headerShown: false}}/>
+        <Stack.Screen
+            name="BillList"
+            component={BillList}
+            options={{
+              headerTintColor: "white",
+              title: "Danh sách hóa đơn",
+              headerStyle: {
+                backgroundColor: "#5265FF",
+                // justifyContent: 'center',
+                // alignItems: 'center',
+                // textAlign: 'center'
+              },
+              headerTitleAlign: "center",
+            }}
+          />
+          {/* <Stack.Screen name="Scanner" component={Scanner} /> */}
+        <Stack.Screen
+          name="Bill"
+          component={Bill}
+          options={{
+            headerTintColor: "white",
+            title: "Chi tiết hóa đơn",
+            headerStyle: {
+              backgroundColor: "#5265FF",
+              // justifyContent: 'center',
+              // alignItems: 'center',
+              // textAlign: 'center'
+            },
+            headerTitleAlign: "center",
+          }}
+        />
+        <Stack.Screen
+          name="Statistic"
+          component={Statistic}
+          options={{
+            headerTintColor: "white",
+            title: "Quản lý nhà trọ",
+            headerStyle: {
+              backgroundColor: "#5265FF",
+              // justifyContent: 'center',
+              // alignItems: 'center',
+              // textAlign: 'center'
+            },
+            headerTitleAlign: "center",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>
