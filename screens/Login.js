@@ -55,7 +55,7 @@ export default function Login(props){
                 autoCapitalize="none"
                 autoCompleteType="tel"
                 textContentType="telephoneNumber"
-                keyboardType="numeric"
+                keyboardType="phone-pad"
             />
 
             <Text style={styles.namefunction}>Mật khẩu :</Text>
@@ -70,7 +70,7 @@ export default function Login(props){
                 style={styles.input}
             />
             
-            <View style={styles.row}>
+            {/* <View style={styles.row}>
                 {/* <View style={styles.rememberMe}>
                     <Switch
                         value={this.state.rememberMe}
@@ -78,16 +78,16 @@ export default function Login(props){
                     />
                     <Text>Remember Me</Text>
                 </View> */}
-                <View style={styles.forgotPassword}>
+                {/* <View style={styles.forgotPassword}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('ForgotPasswordScreen')}
                     >
                     <Text style={styles.label}>Quên mật khẩu?</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </View> */}
             
-            <View style ={{width : '70%',height:60 , marginBottom: 60 }}  >
+            <View style ={{width : '70%',height:60 , marginTop:'5%',marginBottom: 60 }}  >
                 <Button title="Đăng nhập" onPress={_onLoginPressed} />
             </View>
 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     //     justifyContent: 'space-between',
     // },
     input: {
-        width: '70%',
+        width: '80%',
         height: 48,
         padding: 10,
         marginTop: 20,

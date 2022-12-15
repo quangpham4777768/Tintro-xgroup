@@ -45,55 +45,48 @@ export default function RegisterScreen(props){
                 <Text style={styles.tx}> ĐĂNG KÝ TÀI KHOẢN</Text>
               </View>
 
-              <Image style={styles.tinyLogo} source={require('../assets/Process.png')} />
+              <Image style={styles.tinyLogo} source={require('../assets/Process1.png')} />
               
-              <View style={{width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
-                <Text style={styles.namefunction}>Số điện thoại :</Text>
+              <View style={{marginBottom:10,width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
+                <Text style={styles.namefunction}>Mật khẩu mới*</Text>
               </View>
               
 
               <TextInput
-                  style={styles.input}
                   returnKeyType="next"
-                  value={number.value}
-                  onChangeText={text => setNumber({ value: text, error: '' })}
-                  error={!!number.error}
-                  errorText={number.error}
+                  secureTextEntry
+                  style={styles.input}
                   autoCapitalize="none"
-                  autoCompleteType="tel"
+                  autoComplete="password"
                   textContentType="telephoneNumber"
-                  keyboardType="phone-pad"
+                //   keyboardType="phone-pad"
               />
               
               <View style={styles.row}>
-                  <Text>Nếu chưa nhận được mã </Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                      <Text style={styles.link}>hãy nhấn vào đây</Text>
-                  </TouchableOpacity>
+                  <Text>Mật khẩu có độ dài từ 8-16 ký tự</Text>
               </View>
 
-              <View style={{width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
-                <Text style={styles.namefunction}>Mã xác nhận*</Text>
+              <View style={{marginBottom:10,width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
+                <Text style={styles.namefunction}>Xác nhận lại mật khẩu*</Text>
               </View>
 
               <TextInput
                   returnKeyType="done"
-                  value={password.value}
-                  onChangeText={text => setPassword({ value: text, error: '' })}
-                  error={!!password.error}
-                  errorText={password.error}
                   secureTextEntry
                   style={styles.input}
+                  autoCapitalize="none"
+                  autoComplete="password"
+                  textContentType="telephoneNumber"
               />
               
             
               <View style ={{width : '70%',height:60 ,marginTop :'5%' }}  >
-                <Button  title="Xác nhận" onPress={() => navigation.navigate('PassCreated')}/>
+                <Button  title="Xác nhận" onPress={() => navigation.navigate('InfoCreated')}/>
               </View>
 
               <View style ={{width : '70%',height:60 , marginBottom: 60 }}  >
                   <TouchableOpacity  >
-                    <Button color='red' title="Hủy đăng ký" onPress={() => navigation.navigate('Login')}/>
+                    <Button color='gray' title="Trở lại" onPress={() => navigation.navigate('Login')}/>
                   </TouchableOpacity>
               </View>
 
@@ -118,6 +111,7 @@ const styles = StyleSheet.create({
         paddingBottom : 50,
         resizeMode: "contain",
         paddingTop : 50,
+
     },
     tx:{
         color:'#FFFFFF',
@@ -144,6 +138,7 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingStart : '10%',
         fontSize:17,
+
     },  
     rememberMe: {
         width: '100%',

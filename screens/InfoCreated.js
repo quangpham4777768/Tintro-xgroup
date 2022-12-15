@@ -45,55 +45,61 @@ export default function RegisterScreen(props){
                 <Text style={styles.tx}> ĐĂNG KÝ TÀI KHOẢN</Text>
               </View>
 
-              <Image style={styles.tinyLogo} source={require('../assets/Process.png')} />
+              <Image style={styles.tinyLogo} source={require('../assets/Process2.png')} />
               
-              <View style={{width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
-                <Text style={styles.namefunction}>Số điện thoại :</Text>
+              <View style={{marginBottom:10,width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
+                <Text style={styles.namefunction}>Họ và tên*</Text>
               </View>
               
 
               <TextInput
-                  style={styles.input}
                   returnKeyType="next"
-                  value={number.value}
-                  onChangeText={text => setNumber({ value: text, error: '' })}
-                  error={!!number.error}
-                  errorText={number.error}
+                  style={styles.input}
                   autoCapitalize="none"
-                  autoCompleteType="tel"
-                  textContentType="telephoneNumber"
-                  keyboardType="phone-pad"
               />
-              
-              <View style={styles.row}>
-                  <Text>Nếu chưa nhận được mã </Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                      <Text style={styles.link}>hãy nhấn vào đây</Text>
-                  </TouchableOpacity>
+
+
+              <View style={{marginBottom:10,width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
+                <Text style={styles.namefunction}>Ngày sinh*</Text>
               </View>
 
-              <View style={{width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
-                <Text style={styles.namefunction}>Mã xác nhận*</Text>
+              <TextInput
+                   returnKeyType="next"
+                   style={styles.input}
+                   autoCapitalize="none"
+                   autoCompleteType="birthdate-day"
+                   keyboardType="numeric"
+              />
+              
+              <View style={{marginBottom:10,width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
+                <Text style={styles.namefunction}>Quê quán*</Text>
               </View>
+              
+
+              <TextInput
+                  returnKeyType="next"
+                  style={styles.input}
+                  autoCapitalize="none"
+              />
+
+            <View style={{marginBottom:10,width:'100%',height:20,alignItems:'center',justifyContent:'center'}}>
+                <Text style={styles.namefunction}>Căn cước công dân*</Text>
+              </View>
+              
 
               <TextInput
                   returnKeyType="done"
-                  value={password.value}
-                  onChangeText={text => setPassword({ value: text, error: '' })}
-                  error={!!password.error}
-                  errorText={password.error}
-                  secureTextEntry
                   style={styles.input}
+                  autoCapitalize="none"
               />
-              
             
               <View style ={{width : '70%',height:60 ,marginTop :'5%' }}  >
-                <Button  title="Xác nhận" onPress={() => navigation.navigate('PassCreated')}/>
+                <Button  title="Đăng ký" onPress={() => navigation.navigate('DoneCreated')}/>
               </View>
 
               <View style ={{width : '70%',height:60 , marginBottom: 60 }}  >
                   <TouchableOpacity  >
-                    <Button color='red' title="Hủy đăng ký" onPress={() => navigation.navigate('Login')}/>
+                    <Button color='gray' title="Trở lại" onPress={() => navigation.navigate('PassCreated')}/>
                   </TouchableOpacity>
               </View>
 
@@ -144,6 +150,7 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingStart : '10%',
         fontSize:17,
+
     },  
     rememberMe: {
         width: '100%',
