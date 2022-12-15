@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text,Button,StyleSheet, Image,TouchableOpacity } from "react-native";
+import { View, Text,Button,StyleSheet, Image,TouchableOpacity,Pressable } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Navigation } from 'swiper';
 import {useState} from 'react'
@@ -22,10 +22,14 @@ export default function Service(){
         day2: "23/2/2022",
         register: 0
     }];
-    
+    const current = new Date();
+    const currentdate = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    const nextdate = `${current.getDate()}/${(current.getMonth()+2)%12}/${current.getFullYear()}`;
     const [wifi,setWifi]=useState(1);
     getSelectedDayEvents = date => {
-        navigation.navigate("Payment",{types:"Đăng kí dọn phòng",date:date,image:require('../assets/Clean.png')})    
+        var d2 = new Date(date);
+        if (current < d2)
+            navigation.navigate("Payment",{types:"Đăng kí dọn phòng",date:date,image:require('../assets/Clean.png')})    
     };
     return(
         <View style ={styles.container}>
@@ -42,7 +46,7 @@ export default function Service(){
                         <View >
                             <View style={styles.float}>
                                 <Text style={styles.half}>Chưa đăng ký dịch vụ Wifi</Text>
-                                <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí wifi",date:"30/9/2022-30/10/2022",image:require('../assets/wifi.png')})}}>
+                                <TouchableOpacity  onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí wifi",date:currentdate + "-"+nextdate,image:require('../assets/wifi.png')})}}>
                                         <Image top='80%' left='200%' source={require('../assets/register.png')}/> 
                                 </TouchableOpacity>
                             </View>
@@ -110,11 +114,10 @@ export default function Service(){
                                     {props.vefried?<Image source={require('../assets/check.png')} style={styles.check}/>:<Image source={require('../assets/uncheck.png')} style={styles.check}/>}
                                     {props.vefried?<Text style={styles.word}>Đã duyệt</Text>:  <Text style={styles.word}>Chưa duyệt</Text>}
                                     <Image style={styles.space} source={require('../assets/space.png')}/>
-                                    <Image style={styles.delets} source={require('../assets/delete.png')}/>
                                     </View>
                                     
                                     {!props.register?
-                                    <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",date:"30/9/2022-30/10/2022",image:require('../assets/car.png')})}}>
+                                    <TouchableOpacity onPress={()=>{navigation.navigate("Payment",{types:"Đăng kí giữ xe",date:currentdate + "-"+nextdate,image:require('../assets/car.png')})}}>
                                         <Image marginTop='2%' source={require('../assets/register.png')}/> 
                                     </TouchableOpacity>:
                                     <TouchableOpacity>
