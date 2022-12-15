@@ -21,23 +21,6 @@ export default function RegisterScreen(props){
 
         return '';
     };
-
-    const _onLoginPressed = () => {
-        // const NumberError = numberValidator(number.value);
-        // const PasswordError = passwordValidator(password.value);
-    
-        // if (NumberError || PasswordError) {
-        //   setNumber({ ...number, error: NumberError });
-        //   setPassword({ ...password, error: PasswordError });
-        //   return;
-        // }
-
-    
-        navigation.navigate('Scanner');
-    };
-
-
-
     return(
         <KeyboardAvoidingView >
             <View style ={styles.container} >

@@ -4,40 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-export default function RegisterScreen(props){
+export default function DoneScreen(props){
     
     const navigation = useNavigation();
-
-    const [number, setNumber] = useState({value: '', error: ''});
-    const [password, setPassword] = useState({value: '', error: ''});
-
-    const numberValidator = (number) =>{
-      if (!number || number.length >= 10) return Alert('Số điện thoại không hợp lệ.') ;
-
-      return '';
-    };
-    const passwordValidator = (password) =>{
-        if (!password || password.length <= 8) return 'Mật khẩu không hợp lệ.';
-
-        return '';
-    };
-
-    const _onLoginPressed = () => {
-        // const NumberError = numberValidator(number.value);
-        // const PasswordError = passwordValidator(password.value);
-    
-        // if (NumberError || PasswordError) {
-        //   setNumber({ ...number, error: NumberError });
-        //   setPassword({ ...password, error: PasswordError });
-        //   return;
-        // }
-
-    
-        navigation.navigate('Scanner');
-    };
-
-
-
     return(
         <KeyboardAvoidingView>
             <View style ={styles.container} >
@@ -46,7 +15,7 @@ export default function RegisterScreen(props){
                 </View>
                 
                 <View style={{ width:'80%',height:500,alignItems:'center',justifyContent:'center'}}>
-                    <Text style={styles.tx}> Bạn đã hoàn tất quá trình đăng ký 
+                    <Text style={styles.tx1}> Bạn đã hoàn tất quá trình đăng ký 
                         Chúc bạn có những trải nhiệm tuyệt với với ứng dụng của chúng tôi</Text>
                 </View>
            
@@ -78,8 +47,15 @@ const styles = StyleSheet.create({
 
         fontWeight: 'bold',
         fontSize : 20,
+        color:'#FFFFFF'
+    },
+    tx1:{
+
+        fontWeight: 'bold',
+        fontSize : 20,
 
     },
+
 
     input: {
         width: '80%',

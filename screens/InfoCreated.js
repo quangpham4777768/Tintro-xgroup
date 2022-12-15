@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-export default function RegisterScreen(props){
+export default function InfoScreen(props){
     
     const navigation = useNavigation();
 

@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text,Button,StyleSheet, Image ,TextInput,TouchableOpacity,Switch, Alert} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import axios from "axios";
-export default function Login(props){
+export default function LoginScreen(props){
     const storeUser = async (value) => {
         try {
             await AsynStorage.setItem("user", JSON.stringify(value));
@@ -106,7 +106,7 @@ export default function Login(props){
             </View> */}
             
             <View style ={{width : '70%',height:60 , marginTop:'5%',marginBottom: 60 }}  >
-                <Button title="Đăng nhập" onPress={_onLoginPressed} />
+                <Button title="Đăng nhập" onPress={() => navigation.navigate('HomePay')} />
             </View>
 
 

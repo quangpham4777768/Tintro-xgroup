@@ -8,7 +8,11 @@ import Animated from 'react-native-reanimated';
 import Service from './screens/Service';
 import Payment from './screens/Payment';
 
-import Login from './screens/Login';
+import LoginScreen from './screens/Login';
+import RegisterScreen from './screens/Register';
+import DoneScreen from './screens/DoneCreated';
+import InfoScreen from './screens/InfoCreated';
+import PassScreen from './screens/PasssCreated';
 import Scanner from './screens/Scanner';
 function MyTabBar({ state, descriptors, navigation, position }) {
   return (
@@ -182,7 +186,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
 const Tab = createMaterialTopTabNavigator();
 const Tab2 = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -190,9 +193,12 @@ export default function App() {
   return (
     <SafeAreaProvider>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Scanner" component={Scanner} />
+      <Stack.Navigator initialRouteName="Login" >
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+        <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="PassCreated" component={PassScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="InfoCreated" component={InfoScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="DoneCreated" component={DoneScreen} options={{headerShown: false}}/>
         <Stack.Screen name="HomePay" component={Home} options={{headerShown: false}} />
         <Stack.Screen name="Payment" component={Payment} options={{headerShown: false}}/>
       </Stack.Navigator>
