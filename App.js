@@ -145,7 +145,7 @@ function Home() {
   return (
       <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
         <Tab.Screen name="Quản lý" component={HomeScreen} />
-        <Tab.Screen name="Thống kê" component={SettingsScreen} />
+        {/* <Tab.Screen name="Thống kê" component={SettingsScreen} /> */}
       </Tab.Navigator>
   );
 }
@@ -153,19 +153,19 @@ function Home() {
 function HomeScreen() {
   return (
       <Tab2.Navigator tabBar={(props) => <MyServiceBar {...props} />}>
-        <Tab2.Screen name="Hóa đơn" component={SettingsScreen} />
+        {/* <Tab2.Screen name="Hóa đơn" component={SettingsScreen} /> */}
         <Tab2.Screen name="Đăng ký dịch vụ" component={Service} />
       </Tab2.Navigator>
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+// function SettingsScreen() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Settings!</Text>
+//     </View>
+//   );
+// }
 
 const styles = StyleSheet.create({
   top1: {
