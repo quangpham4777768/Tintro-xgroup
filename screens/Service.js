@@ -1,7 +1,7 @@
-import React from "react";
+import React ,{useEffect} from "react";
 import { View, Text,Button,StyleSheet, Image,TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import { Navigation } from 'swiper';
+// import { Navigation } from 'swiper';
 import {useState} from 'react'
 import Swiper from 'react-native-swiper/src';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
@@ -9,7 +9,7 @@ import Animated from 'react-native-reanimated';
 
 export default function Service(){
     const navigation = useNavigation();
-    useEffect(() => {
+        useEffect(() => {
         AsyncStorage.getItem("user").then((userid)=>
         axios.get('https://backend-production-56ee.up.railway.app/api/getAllAprtmentUser/?id='+userid).then((response) => {
             const res = response.data;
@@ -28,7 +28,7 @@ export default function Service(){
     const nextdate = `${current.getDate()}/${(current.getMonth()+2)%12}/${current.getFullYear()}`;
     const [service,setService]=useState([]);
     const [wifi,setWifi]=useState(0);
-    getSelectedDayEvents = date => {
+    const getSelectedDayEvents = date => {
         navigation.navigate("Payment",{types:"Đăng kí dọn phòng",date:date,image:require('../assets/Clean.png')})    
     };
     return(

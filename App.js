@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { Text, View, TouchableOpacity,StyleSheet,Animated  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Location from "./screens/Location";
 import Info from "./screens/Info";
@@ -11,7 +14,9 @@ import RegisterScreen from './screens/Register';
 import DoneScreen from './screens/DoneCreated';
 import InfoScreen from './screens/InfoCreated';
 import PassScreen from './screens/PasssCreated';
-import Scanner from './screens/Scanner';
+import Payment from './screens/Payment';
+import Service from './screens/Service';
+
 function MyTabBar({ state, descriptors, navigation, position }) {
   return (
     <SafeAreaView style={{ flexDirection: 'row',top:'0%', backgroundColor: 'blue' }}>
