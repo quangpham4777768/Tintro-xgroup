@@ -90,7 +90,8 @@ export default function Service(){
                     </View>
                     <View style={styles.slide1}>
                         <Text style={styles.text}>Dịch vụ giữ xe</Text>
-                        {car.map((props)=>{
+                        {service.map((props)=>{
+                            if(props.type=="Đăng ký giữ xe")
                             return(
                                 <View marginTop='0%'>
                                     <Animated.Text
