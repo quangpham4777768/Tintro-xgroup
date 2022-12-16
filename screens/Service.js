@@ -6,6 +6,7 @@ import {useState} from 'react'
 import Swiper from 'react-native-swiper/src';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import Animated from 'react-native-reanimated';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Service(){
     const navigation = useNavigation();

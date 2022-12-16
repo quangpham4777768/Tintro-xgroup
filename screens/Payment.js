@@ -2,6 +2,7 @@ import React,{useState , useEffect} from "react";
 import {Text,View,StyleSheet,TextInput,Image,TouchableOpacity} from 'react-native';
 import Animated from 'react-native-reanimated';
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Payment( {navigation, route} ){
     const [text,setText]= useState("");
     const [name,setName]= useState("");
